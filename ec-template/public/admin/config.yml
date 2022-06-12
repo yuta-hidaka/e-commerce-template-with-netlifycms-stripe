@@ -1,0 +1,101 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: public/cms
+public_folder: cms
+publish_mode: editorial_workflow
+local_backend: true
+
+collections:
+  - name: 'tags'
+    label: 'Tags'
+    folder: 'cms/tags'
+    format: 'frontmatter'
+    create: true
+    slug: '{{name}}'
+    identifier_field: name
+    summary: '{{name}}'
+    fields:
+      - label: 'name'
+        name: 'name'
+        widget: 'string'
+
+  - name: 'categories'
+    label: 'Categories'
+    folder: 'cms/categories'
+    format: 'frontmatter'
+    create: true
+    slug: '{{name}}'
+    identifier_field: name
+    summary: '{{name}}'
+    fields:
+      - label: 'name'
+        name: 'name'
+        widget: 'string'
+
+  - name: 'products'
+    label: 'Products'
+    folder: 'cms/products'
+    format: 'frontmatter'
+    create: true
+    slug: '{{slug}}'
+    identifier_field: slug
+    summary: '{{title}}'
+    fields:
+      - label: 'Title'
+        name: 'title'
+        widget: 'string'
+      - label: 'sold'
+        name: 'sold'
+        widget: 'boolean'
+        required: false
+      - label: 'quantity'
+        name: 'quantity'
+        widget: 'number'
+      - label: 'price'
+        name: 'price'
+        widget: 'number'
+      - label: 'currency'
+        name: 'currency'
+        widget: 'string'
+      - label: 'Stripe Price ID'
+        name: 'stripePriceID'
+        widget: 'string'
+      - label: 'Slug'
+        name: 'slug'
+        widget: 'string'
+      - label: 'Publish Date'
+        name: 'date'
+        widget: 'datetime'
+        format: 'YYYY-MM-DD'
+        dateFormat: 'YYYY-MM-DD'
+        timeFormat: false
+      - label: 'Description'
+        name: 'description'
+        widget: 'markdown'
+      - label: 'Tags'
+        name: 'tags'
+        widget: 'list'
+        choose_url: true
+        summary: '{{fields.tag}}'
+        field:
+          {
+            label: Tag,
+            name: tag,
+            widget: relation,
+            collection: tags,
+            value_field: name,
+            search_fields: ['name'],
+          }
+      - label: 'Category'
+        name: 'category'
+        widget: 'relation'
+        collection: 'categories'
+        value_field: 'name'
+        search_fields: ['name']
+      - label: 'Product Images'
+        name: 'productImages'
+        widget: 'list'
+        choose_url: true
+        summary: '{{fields.image}}'
+        field: { label: Image, name: image, widget: image }
