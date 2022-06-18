@@ -11,6 +11,7 @@ import {
 } from '@nextui-org/react';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+// @ts-ignore
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { useShoppingCart } from 'use-shopping-cart/react';
