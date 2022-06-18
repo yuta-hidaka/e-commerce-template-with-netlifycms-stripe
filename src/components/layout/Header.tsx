@@ -2,6 +2,7 @@ import { Button, Collapse, Grid } from '@nextui-org/react';
 import Link from 'next/link';
 import { ReactNode } from 'react';
 import { useShoppingCart } from 'use-shopping-cart/react';
+import { SITE_NAME } from '../../config';
 import { useLarge } from '../../utils/hooks/window';
 import { Hamburger } from '../icon/Hamburger';
 
@@ -29,7 +30,7 @@ const Header = ({ children }: Props) => {
         <nav>
           <Collapse.Group divider>
             <Collapse
-              title="--@@BONSAI@@--"
+              title={SITE_NAME}
               arrowIcon={<Hamburger />}
               animated
               divider
