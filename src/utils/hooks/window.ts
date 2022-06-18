@@ -7,7 +7,7 @@ export const useLarge = () => {
         if (typeof window === 'undefined') return
 
         function handleWindowResize() {
-            setLarge(window.innerWidth > 966);
+            setLarge(window.innerWidth > 959);
         }
 
         window.addEventListener('resize', handleWindowResize);

@@ -41,33 +41,38 @@ const Detail = () => {
   return product ? (
     <>
       <Container>
-        <Row gap={1}>
+        <Row>
           {large && (
-            <Col>
-              <Card
-                css={{ $$cardColor: '$colors$white', w: '100%', maxW: 550 }}
-              >
-                <Card.Body>
-                  {/* <Grid xs={4} lg={11} xs={8} sm={5}> */}
-                  {/* // FIXME: Want change some another swipe component */}
-                  <Card>
-                    <Card.Body css={{ p: 0 }}>
-                      <Slide>
-                        {product.attributes.images.map((slideImage, index) => (
-                          <Card.Image
-                            src={slideImage}
-                            objectFit="cover"
-                            width="100%"
-                            height="100%"
-                            alt="Relaxing app background"
-                          />
-                        ))}
-                      </Slide>
-                    </Card.Body>
-                  </Card>
-                </Card.Body>
-              </Card>
-            </Col>
+            <>
+              <Col>
+                <Card
+                  css={{ $$cardColor: '$colors$white', w: '100%', maxW: 550 }}
+                >
+                  <Card.Body>
+                    {/* <Grid xs={4} lg={11} xs={8} sm={5}> */}
+                    {/* // FIXME: Want change some another swipe component */}
+                    <Card>
+                      <Card.Body css={{ p: 0 }}>
+                        <Slide>
+                          {product.attributes.images.map(
+                            (slideImage, index) => (
+                              <Card.Image
+                                src={slideImage}
+                                objectFit="cover"
+                                width="100%"
+                                height="100%"
+                                alt="Relaxing app background"
+                              />
+                            )
+                          )}
+                        </Slide>
+                      </Card.Body>
+                    </Card>
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Spacer x={1} />
+            </>
           )}
           <Col>
             {!large && (
