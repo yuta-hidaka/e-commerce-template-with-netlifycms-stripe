@@ -7,6 +7,19 @@ publish_mode: editorial_workflow
 local_backend: true
 
 collections:
+  - name: 'about page'
+    label: 'about-page'
+    folder: 'cms/tags'
+    format: 'frontmatter'
+    create: true
+    slug: '{{data}}'
+    identifier_field: data
+    summary: '{{data}}'
+    fields:
+      - label: 'Contents'
+        name: 'data'
+        widget: 'markdown'
+
   - name: 'tags'
     label: 'Tags'
     folder: 'cms/tags'

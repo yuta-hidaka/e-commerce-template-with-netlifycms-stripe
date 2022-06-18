@@ -9,6 +9,7 @@ import {
   Spacer,
   Text,
 } from '@nextui-org/react';
+import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 // @ts-ignore
@@ -19,7 +20,7 @@ import type { Product } from '../../types';
 import { useLarge } from '../../utils/hooks/window';
 import { getProduct } from '../../utils/products';
 
-const Detail = () => {
+const Detail: NextPage = () => {
   const router = useRouter();
   const { id } = router.query;
   const [product, setProduct] = useState<Product>();
