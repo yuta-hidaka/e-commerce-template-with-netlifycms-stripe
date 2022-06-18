@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import Stripe from 'stripe'
+import { getProducts } from '../../../utils/products'
 /*
  * Product data can be loaded from anywhere. In this case, we’re loading it from
  * a local JSON file, but this could also come from an async call to your
@@ -8,7 +9,7 @@ import Stripe from 'stripe'
  * The important thing is that the product info is loaded from somewhere trusted
  * so you know the pricing information is accurate.
  */
-import inventory from '../../../data/products'
+
 
 const { validateCartItems } = require('use-shopping-cart/utilities')
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
@@ -21,9 +22,10 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === 'POST') {
+    const products = await getProducts()
     try {
       // Validate the cart details that were sent from the client.
-      const line_items = validateCartItems(inventory as any, req.body)
+      const line_items = validateCartItems(products.map((p) => p.attributes) as any, req.body)
       const hasSubscription = line_items.find((item: any) => {
         return !!item.price_data.recurring
       })
@@ -37,7 +39,7 @@ export default async function handler(
         },
         line_items,
         success_url: `${req.headers.origin}/result?session_id={CHECKOUT_SESSION_ID}`,
-        cancel_url: `${req.headers.origin}/use-shopping-cart`,
+        cancel_url: `${req.headers.origin}/cart`,
         mode: hasSubscription ? 'subscription' : 'payment',
       }
 

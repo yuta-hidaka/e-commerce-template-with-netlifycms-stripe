@@ -1,5 +1,3 @@
-import { React } from '@nextui-org/react';
-
 export const Hamburger = ({
   fill = 'currentColor',
   filled,

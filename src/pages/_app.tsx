@@ -1,8 +1,9 @@
 import { NextUIProvider } from '@nextui-org/react';
 import type { AppProps } from 'next/app';
 import { CartProvider } from 'use-shopping-cart/react';
+import Header from '../components/layout/Header';
+import SEO from '../components/layout/SEO';
 import Cart from '../components/stripe/Cart';
-import Layout from '../components/stripe/Layout';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -18,11 +19,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         allowedCountries={['US', 'GB', 'CA']}
         billingAddressCollection={true}
       >
-        <Layout title="Shopping Cart | Next.js + TypeScript Example">
+        <SEO title="Shopping Cart | Next.js + TypeScript Example">
           <Cart>
-            <Component {...pageProps} />
+            <Header>
+              <Component {...pageProps} />
+            </Header>
           </Cart>
-        </Layout>
+        </SEO>
       </CartProvider>
     </NextUIProvider>
   );

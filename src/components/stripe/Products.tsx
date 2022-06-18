@@ -1,26 +1,38 @@
 import { Button, Card, Col, Grid, Row, Text } from '@nextui-org/react';
+import { useEffect, useState } from 'react';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart/react';
-import products from '../../data/products';
-
+import type { Product } from '../../types';
+import { getProducts } from '../../utils/products';
+// import products from '../../data/products';
+import { useRouter } from 'next/router';
 const Products = () => {
   const { addItem, removeItem } = useShoppingCart();
+  const [products, setProducts] = useState<Product[]>([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    (async () => {
+      setProducts(await getProducts());
+    })();
+  }, [products]);
 
   return (
     <section className="products">
       <Grid.Container gap={2} justify="center">
-        {products.map((product) => (
-          <Grid xl={12} md={6} sm={4}>
+        {products.map((product, i) => (
+          <Grid key={`${i}`} lg={4}>
             <Card
+              hoverable
               cover
               css={{ w: '100%' }}
-              onClick={() => console.log('detail')}
+              onClick={() => router.push(`/shop/${product.slug}`)}
             >
               <Card.Body>
                 <Card.Image
-                  src={product.image}
+                  src={product.attributes.images[0]}
                   height={400}
                   width="100%"
-                  alt={product.name}
+                  alt={product.attributes.title}
                 />
               </Card.Body>
               <Card.Footer
@@ -37,22 +49,22 @@ const Products = () => {
                 <Row>
                   <Col>
                     <Text css={{ color: '$accents4', fontWeight: '$semibold' }}>
-                      {product.name}
+                      {product.attributes.title}
                     </Text>
                     <Text css={{ color: '$accents4', fontWeight: '$semibold' }}>
                       {formatCurrencyString({
-                        value: product.price,
-                        currency: product.currency,
+                        value: product.attributes.price,
+                        currency: product.attributes.currency,
                       })}
                     </Text>
                   </Col>
                   <Col>
                     <Row justify="flex-end">
                       <Button
-                        flat
+                        // flat
                         auto
                         color="gradient"
-                        onPress={() => addItem(product)}
+                        onPress={() => addItem(product.attributes as any)}
                       >
                         <Text
                           // css={{ color: 'inherit' }}
