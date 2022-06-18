@@ -1,7 +1,8 @@
 import { Button, Collapse, Grid } from '@nextui-org/react';
 import Link from 'next/link';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode } from 'react';
 import { useShoppingCart } from 'use-shopping-cart/react';
+import { useLarge } from '../../utils/hooks/window';
 import { Hamburger } from '../icon/Hamburger';
 
 type Props = {
@@ -10,6 +11,8 @@ type Props = {
 
 const Header = ({ children }: Props) => {
   const { cartCount } = useShoppingCart();
+  const large = useLarge();
+
   const MenuItem = ({ text, path }: { text: string; path: string }) => {
     return (
       <Button light color="default" size="sm">
@@ -19,14 +22,6 @@ const Header = ({ children }: Props) => {
       </Button>
     );
   };
-
-  // const minimum = true;
-  const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== 'undefined') setOpen(window.innerWidth > 768);
-    console.log(open);
-  }, [open]);
 
   return (
     <>
@@ -38,7 +33,7 @@ const Header = ({ children }: Props) => {
               arrowIcon={<Hamburger />}
               animated
               divider
-              expanded={open}
+              expanded={large}
               // shadow
             >
               <Grid.Container gap={0} justify="center">

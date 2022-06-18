@@ -72,7 +72,7 @@ collections:
         timeFormat: false
       - label: 'Description'
         name: 'description'
-        widget: 'markdown'
+        widget: 'text'
       - label: 'Tags'
         name: 'tags'
         widget: 'list'

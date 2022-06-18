@@ -4,7 +4,7 @@ export interface Product {
 }
 
 export interface Attributes {
-    title: string
+    name: string
     quantity: number
     price: number
     currency: string
