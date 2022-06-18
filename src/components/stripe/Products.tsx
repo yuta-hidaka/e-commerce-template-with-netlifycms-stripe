@@ -6,7 +6,7 @@ import { getProducts } from '../../utils/products';
 // import products from '../../data/products';
 import { useRouter } from 'next/router';
 const Products = () => {
-  const { addItem, removeItem } = useShoppingCart();
+  const { addItem } = useShoppingCart();
   const [products, setProducts] = useState<Product[]>([]);
   const router = useRouter();
 
@@ -32,14 +32,14 @@ const Products = () => {
                   src={product.attributes.images[0]}
                   height={400}
                   width="100%"
-                  alt={product.attributes.title}
+                  alt={product.attributes.name}
                 />
               </Card.Body>
               <Card.Footer
                 blur
                 css={{
                   position: 'absolute',
-                  bgBlur: '#ffffff',
+                  bgBlur: '#000000',
                   borderTop:
                     '$borderWeights$light solid rgba(255, 255, 255, 0.2)',
                   bottom: 0,
@@ -49,7 +49,7 @@ const Products = () => {
                 <Row>
                   <Col>
                     <Text css={{ color: '$accents4', fontWeight: '$semibold' }}>
-                      {product.attributes.title}
+                      {product.attributes.name}
                     </Text>
                     <Text css={{ color: '$accents4', fontWeight: '$semibold' }}>
                       {formatCurrencyString({
