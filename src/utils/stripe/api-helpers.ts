@@ -12,7 +12,6 @@ export async function fetchGetJSON(url: string) {
 
 export async function fetchPostJSON(url: string, data?: {}) {
     try {
-        // Default options are marked with *
         const response = await fetch(url, {
             method: 'POST', // *GET, POST, PUT, DELETE, etc.
             mode: 'cors', // no-cors, *cors, same-origin
@@ -28,7 +27,6 @@ export async function fetchPostJSON(url: string, data?: {}) {
         })
         return await response.json() // parses JSON response into native JavaScript objects
     } catch (err) {
-        console.log(err)
         if (err instanceof Error) {
             throw new Error(err.message)
         }

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import * as config from '../../config';
-import { fetchPostJSON } from '../../utils/api-helpers';
 import getStripe from '../../utils/get-stripejs';
 import { formatAmountForDisplay } from '../../utils/stripe-helpers';
+import { fetchPostJSON } from '../../utils/stripe/api-helpers';
 import CustomDonationInput from './CustomDonationInput';
 import StripeTestCards from './StripeTestCards';
 
@@ -30,9 +30,6 @@ const CheckoutForm = () => {
       console.error(response.message);
       return;
     }
-
-    console.log('--------------------------------------', response);
-    console.log(response.id);
 
     // Redirect to Checkout.
     const stripe = await getStripe();

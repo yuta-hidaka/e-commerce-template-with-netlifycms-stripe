@@ -2,7 +2,7 @@ import { Button, Card, Col, Grid, Row, Text } from '@nextui-org/react';
 import { useEffect, useState } from 'react';
 import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart/react';
 import type { Product } from '../../types';
-import { getProducts } from '../../utils/products';
+import { getProducts } from '../../utils/cms/products';
 // import products from '../../data/products';
 import { useRouter } from 'next/router';
 const Products = () => {

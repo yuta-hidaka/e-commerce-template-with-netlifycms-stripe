@@ -10,7 +10,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { MdBorderColor, MdShoppingBasket } from 'react-icons/md';
 import { useShoppingCart } from 'use-shopping-cart/react';
-import { fetchPostJSON } from '../../utils/api-helpers';
+import { fetchPostJSON } from '../../utils/stripe/api-helpers';
 
 const CartSummary = () => {
   const [loading, setLoading] = useState(false);
@@ -27,7 +27,6 @@ const CartSummary = () => {
   } = useShoppingCart();
 
   useEffect(() => {
-    console.log(cartDetails);
     setCartEmpty(!cartCount);
   }, [cartCount]);
 

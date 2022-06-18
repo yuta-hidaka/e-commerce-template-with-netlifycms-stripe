@@ -9,7 +9,7 @@ local_backend: true
 collections:
   - name: 'about page'
     label: 'about-page'
-    folder: 'cms/tags'
+    folder: 'cms/about'
     format: 'frontmatter'
     create: true
     slug: '{{data}}'

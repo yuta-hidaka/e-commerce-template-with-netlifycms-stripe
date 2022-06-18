@@ -16,9 +16,9 @@ import { useEffect, useState } from 'react';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { useShoppingCart } from 'use-shopping-cart/react';
+import { getProduct } from '../..//utils/cms/products';
 import type { Product } from '../../types';
 import { useLarge } from '../../utils/hooks/window';
-import { getProduct } from '../../utils/products';
 
 const Detail: NextPage = () => {
   const router = useRouter();
@@ -33,10 +33,6 @@ const Detail: NextPage = () => {
       setProduct(await getProduct(`${id}`));
     })();
   }, [id]);
-
-  useEffect(() => {
-    console.log(product);
-  }, [product]);
 
   const imageComponent = () => {};
 

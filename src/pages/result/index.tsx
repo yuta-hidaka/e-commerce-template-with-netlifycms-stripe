@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { Grid, Image, Spacer, Text } from '@nextui-org/react';
 
 import useSWR from 'swr';
-import { fetchGetJSON } from '../../utils/api-helpers';
+import { fetchGetJSON } from '../../utils/stripe/api-helpers';
 
 const ResultPage: NextPage = () => {
   const router = useRouter();

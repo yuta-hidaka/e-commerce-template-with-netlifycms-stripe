@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import Stripe from 'stripe'
-import { getProducts } from '../../../utils/products'
+import { getProducts } from '../../../utils/cms/products'
 /*
  * Product data can be loaded from anywhere. In this case, we’re loading it from
  * a local JSON file, but this could also come from an async call to your
@@ -48,7 +48,6 @@ export default async function handler(
 
       res.status(200).json(checkoutSession)
     } catch (err) {
-      console.log(err)
       const errorMessage =
         err instanceof Error ? err.message : 'Internal server error'
       res.status(500).json({ statusCode: 500, message: errorMessage })
