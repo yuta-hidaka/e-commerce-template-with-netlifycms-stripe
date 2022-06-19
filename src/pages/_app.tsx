@@ -3,11 +3,11 @@ import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import { CartProvider } from 'use-shopping-cart/react';
 import SEO from '../components/layout/SEO';
+import Cart from '../components/stripe/Cart';
 import '../styles/globals.css';
 
 const Header = dynamic(() => import('../components/layout/Header'));
 const Footer = dynamic(() => import('../components/layout/Footer'));
-const Cart = dynamic(() => import('../components/stripe/Cart'));
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

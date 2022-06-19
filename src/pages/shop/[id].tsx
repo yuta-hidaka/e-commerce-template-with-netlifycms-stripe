@@ -1,11 +1,9 @@
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next';
 // @ts-ignore
-import dynamic from 'next/dynamic';
 import 'react-slideshow-image/dist/styles.css';
+import Product from '../../components/stripe/Product';
 import { ProductType } from '../../types';
 import { getProduct, getProducts } from '../../utils/cms/products';
-
-const Product = dynamic(() => import('../../components/stripe/Product'));
 
 type Props = {
   product: ProductType;
