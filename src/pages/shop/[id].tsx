@@ -34,8 +34,6 @@ const Detail: NextPage = () => {
     })();
   }, [id]);
 
-  const imageComponent = () => {};
-
   return product ? (
     <>
       <Container>
@@ -55,6 +53,7 @@ const Detail: NextPage = () => {
                           {product.attributes.images.map(
                             (slideImage, index) => (
                               <Card.Image
+                                key={index}
                                 src={slideImage}
                                 objectFit="cover"
                                 width="100%"
@@ -86,6 +85,7 @@ const Detail: NextPage = () => {
                             {product.attributes.images.map(
                               (slideImage, index) => (
                                 <Card.Image
+                                  key={index}
                                   src={slideImage}
                                   objectFit="cover"
                                   width="100%"

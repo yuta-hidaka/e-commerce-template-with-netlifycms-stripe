@@ -30,10 +30,10 @@ const ResultPage: NextPage = () => {
           }}
           weight="bold"
         >
-          "THANK YU FOR PURCHUS"
+          THANK YOU FOR PURCHASE
         </Text>
         <Text>
-          "After we check your order I will send products as soon as possible"
+          After we check your order I will send products as soon as possible
         </Text>
         <Spacer y={2} />
         <Image

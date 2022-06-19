@@ -7,15 +7,18 @@ publish_mode: editorial_workflow
 local_backend: true
 
 collections:
-  - name: 'about page'
-    label: 'about-page'
-    folder: 'cms/about'
+  - name: 'Pages'
+    label: 'pages'
+    folder: 'cms/pages'
     format: 'frontmatter'
     create: true
-    slug: '{{data}}'
-    identifier_field: data
-    summary: '{{data}}'
+    slug: '{{name}}'
+    identifier_field: name
+    summary: '{{name}}'
     fields:
+      - label: 'Page name'
+        name: 'name'
+        widget: 'string'
       - label: 'Contents'
         name: 'data'
         widget: 'markdown'

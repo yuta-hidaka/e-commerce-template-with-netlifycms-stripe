@@ -9,7 +9,7 @@ const Cart: NextPage = () => {
 
   useEffect(() => {
     (async () => {
-      setMarkdown(await getPageMarkDown('about'));
+      setMarkdown(await getPageMarkDown('privacy-policy'));
     })();
   }, []);
   return (

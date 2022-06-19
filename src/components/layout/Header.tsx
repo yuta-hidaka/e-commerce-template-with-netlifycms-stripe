@@ -42,10 +42,10 @@ const Header = ({ children }: Props) => {
                   <MenuItem text="HOME" path="/" />
                 </Grid>
                 <Grid key="shop">
-                  <MenuItem text="SHOP" path="/" />
+                  <MenuItem text="SHOP" path="/shop" />
                 </Grid>
                 <Grid key="about">
-                  <MenuItem text="ABOUT" path="/" />
+                  <MenuItem text="ABOUT" path="/about" />
                 </Grid>
                 <Grid key="cart">
                   <MenuItem text="CART" path="/cart" />

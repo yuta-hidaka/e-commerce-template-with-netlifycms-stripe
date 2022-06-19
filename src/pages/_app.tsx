@@ -1,6 +1,7 @@
 import { NextUIProvider } from '@nextui-org/react';
 import type { AppProps } from 'next/app';
 import { CartProvider } from 'use-shopping-cart/react';
+import Footer from '../components/layout/Footer';
 import Header from '../components/layout/Header';
 import SEO from '../components/layout/SEO';
 import Cart from '../components/stripe/Cart';
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           <Cart>
             <Header>
               <Component {...pageProps} />
+              <Footer />
             </Header>
           </Cart>
         </SEO>
