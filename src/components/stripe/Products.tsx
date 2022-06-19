@@ -5,6 +5,7 @@ import type { Product } from '../../types';
 import { getProducts } from '../../utils/cms/products';
 // import products from '../../data/products';
 import { useRouter } from 'next/router';
+
 const Products = () => {
   const { addItem } = useShoppingCart();
   const [products, setProducts] = useState<Product[]>([]);
@@ -65,6 +66,7 @@ const Products = () => {
                         auto
                         color="gradient"
                         onPress={() => addItem(product.attributes as any)}
+                        disabled={product.attributes.quantity < 0}
                       >
                         <Text
                           // css={{ color: 'inherit' }}

@@ -17,6 +17,7 @@ import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 import { useShoppingCart } from 'use-shopping-cart/react';
 import { getProduct } from '../..//utils/cms/products';
+import SEO from '../../components/layout/SEO';
 import type { Product } from '../../types';
 import { useLarge } from '../../utils/hooks/window';
 
@@ -34,8 +35,18 @@ const Detail: NextPage = () => {
     })();
   }, [id]);
 
+  useEffect(() => {
+    console.log(large);
+  }, [large]);
+
   return product ? (
     <>
+      <SEO
+        title={product.attributes.name}
+        description={product.attributes.description}
+        image={product.attributes.images[0]}
+        keywords={product.attributes.tags}
+      />
       <Container>
         <Row>
           {large && (
@@ -125,35 +136,55 @@ const Detail: NextPage = () => {
                       <Text>{product.attributes.description}</Text>
                     </Row>
                     <Spacer y={1} />
+                    <Row justify="flex-end" gap={0.5}>
+                      {product.attributes.quantity === 0 ? (
+                        <Text weight="bold">SORRY THIS IS OUT OF STOCK 🙇‍♂️</Text>
+                      ) : (
+                        <>
+                          <Text weight="bold">
+                            {product.attributes.quantity}
+                          </Text>
+                          <Text>left</Text>
+                        </>
+                      )}
+                    </Row>
+                    <Row justify="flex-end" gap={0.5}>
+                      <Text weight="bold">{product.attributes.price}</Text>
+                      <Text>{product.attributes.currency}</Text>
+                    </Row>
+                    <Spacer y={1} />
                   </Container>
                 </Card.Body>
               </Card>
             </Row>
             <Spacer y={1} />
-            <Row>
-              <Button
-                // flat
-                auto
-                color="gradient"
-                onPress={() => addItem(product.attributes as any)}
-              >
-                <Text
-                  // css={{ color: 'inherit' }}
-                  size={12}
-                  weight="bold"
-                  transform="uppercase"
+            <Container>
+              <Row justify="flex-end">
+                <Button
+                  // flat
+                  auto
+                  color="gradient"
+                  onPress={() => addItem(product.attributes as any)}
+                  disabled={product.attributes.quantity < 0}
                 >
-                  ADD CART
-                </Text>
-              </Button>
-            </Row>
-            <Spacer y={1} />
-            <Row>
-              <Link href="#" icon>
-                BEFORE YOU BUY
-              </Link>
-            </Row>
-            <Spacer y={1} />
+                  <Text
+                    // css={{ color: 'inherit' }}
+                    size={12}
+                    weight="bold"
+                    transform="uppercase"
+                  >
+                    ADD CART
+                  </Text>
+                </Button>
+              </Row>
+              <Spacer y={1} />
+              <Row justify="flex-end">
+                <Link href="#" icon>
+                  BEFORE YOU BUY
+                </Link>
+              </Row>
+              <Spacer y={1} />
+            </Container>
           </Col>
         </Row>
       </Container>

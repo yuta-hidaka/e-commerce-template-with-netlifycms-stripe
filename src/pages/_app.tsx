@@ -20,14 +20,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         allowedCountries={['US', 'GB', 'CA']}
         billingAddressCollection={true}
       >
-        <SEO title="Shopping Cart | Next.js + TypeScript Example">
-          <Cart>
-            <Header>
-              <Component {...pageProps} />
-              <Footer />
-            </Header>
-          </Cart>
-        </SEO>
+        <Cart>
+          <SEO title="Shopping Cart | Next.js + TypeScript Example" />
+          <Header>
+            <Component {...pageProps} />
+            <Footer />
+          </Header>
+        </Cart>
       </CartProvider>
     </NextUIProvider>
   );
