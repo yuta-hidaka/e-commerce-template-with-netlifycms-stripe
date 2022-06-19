@@ -1,5 +1,5 @@
-import { Button, Collapse, Grid } from '@nextui-org/react';
-import Link from 'next/link';
+import { Button, Collapse, Grid, Text } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 import { useShoppingCart } from 'use-shopping-cart/react';
 import { SITE_NAME } from '../../config';
@@ -13,13 +13,17 @@ type Props = {
 const Header = ({ children }: Props) => {
   const { cartCount } = useShoppingCart();
   const large = useLarge();
+  const router = useRouter();
 
   const MenuItem = ({ text, path }: { text: string; path: string }) => {
     return (
-      <Button light color="default" size="sm">
-        <Link href={path}>
-          <a>{text}</a>
-        </Link>
+      <Button
+        light
+        color="default"
+        size="sm"
+        onPress={() => router.push(`${path}`)}
+      >
+        <Text>{text}</Text>
       </Button>
     );
   };

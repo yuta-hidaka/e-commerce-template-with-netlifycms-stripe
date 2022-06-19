@@ -5,10 +5,12 @@ import {
   Container,
   Grid,
   Link,
+  Popover,
   Row,
   Spacer,
   Text,
 } from '@nextui-org/react';
+import { useState } from 'react';
 // @ts-ignore
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
@@ -24,6 +26,7 @@ type Props = {
 const Product = ({ product }: Props) => {
   const large = useLarge();
   const { addItem } = useShoppingCart();
+  const [isOpen, setIsOpen] = useState(false);
 
   return product ? (
     <>
@@ -146,26 +149,37 @@ const Product = ({ product }: Props) => {
             <Spacer y={1} />
             <Container>
               <Row justify="flex-end">
-                <Button
-                  // flat
-                  auto
-                  color="gradient"
-                  onPress={() => addItem(product.attributes as any)}
-                  disabled={product.attributes.quantity < 0}
+                <Popover
+                  placement="top"
+                  isOpen={isOpen}
+                  onOpenChange={(open) => {
+                    setIsOpen(open);
+                    if (!open) return;
+                    setTimeout(() => {
+                      setIsOpen(false);
+                    }, 1500);
+                  }}
                 >
-                  <Text
-                    // css={{ color: 'inherit' }}
-                    size={12}
-                    weight="bold"
-                    transform="uppercase"
-                  >
-                    ADD CART
-                  </Text>
-                </Button>
+                  <Popover.Trigger>
+                    <Button
+                      auto
+                      color="gradient"
+                      onPress={() => addItem(product.attributes as any)}
+                      disabled={product.attributes.quantity < 0}
+                    >
+                      <Text size={12} weight="bold" transform="uppercase">
+                        ADD CART
+                      </Text>
+                    </Button>
+                  </Popover.Trigger>
+                  <Popover.Content>
+                    <Text css={{ p: '$10' }}>ADDED YOUR CART !</Text>
+                  </Popover.Content>
+                </Popover>
               </Row>
               <Spacer y={1} />
               <Row justify="flex-end">
-                <Link href="#" icon>
+                <Link href="/regal/terms-and-conditions" icon>
                   BEFORE YOU BUY
                 </Link>
               </Row>
