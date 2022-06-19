@@ -1,22 +1,27 @@
 import { Container } from '@nextui-org/react';
-import { NextPage } from 'next';
-import { useEffect, useState } from 'react';
+import { GetStaticProps, NextPage } from 'next';
 import ReactMarkdown from 'react-markdown';
 import { getPageMarkDown } from '../../utils/cms/common';
 
-const Cart: NextPage = () => {
-  const [markdown, setMarkdown] = useState('');
+type Props = {
+  contents: string;
+};
 
-  useEffect(() => {
-    (async () => {
-      setMarkdown(await getPageMarkDown('cookie-policy'));
-    })();
-  }, []);
+const Home: NextPage<Props> = ({ contents }: Props) => {
   return (
     <Container>
-      <ReactMarkdown>{markdown}</ReactMarkdown>
+      <ReactMarkdown>{contents}</ReactMarkdown>
     </Container>
   );
 };
 
-export default Cart;
+export default Home;
+
+export const getStaticProps: GetStaticProps = async () => {
+  const contents = await getPageMarkDown('cookie-policy');
+  return {
+    props: {
+      contents,
+    },
+  };
+};

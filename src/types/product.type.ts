@@ -1,9 +1,9 @@
-export interface Product {
-    attributes: Attributes
+export interface ProductType {
+    attributes: AttributesType
     slug: string
 }
 
-export interface Attributes {
+export interface AttributesType {
     name: string
     quantity: number
     price: number

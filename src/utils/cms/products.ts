@@ -1,6 +1,6 @@
-import { Product } from '../../types';
+import { ProductType } from '../../types';
 
-export const getProducts = async (): Promise<Product[]> => {
+export const getProducts = async (): Promise<ProductType[]> => {
     const markdownFiles = require
         .context('../../../cms/products', false, /\.md$/)
         .keys()
@@ -14,7 +14,7 @@ export const getProducts = async (): Promise<Product[]> => {
     );
 };
 
-export const getProduct = async (slug: string): Promise<Product> => {
+export const getProduct = async (slug: string): Promise<ProductType> => {
     const markdown = await import(`../../../cms/products/${slug}.md`);
-    return Promise.resolve({ ...markdown, slug: slug.substring(0, slug.length - 3) } as Product)
+    return Promise.resolve({ ...markdown, slug: slug.substring(0, slug.length - 3) } as ProductType)
 }

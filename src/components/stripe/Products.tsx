@@ -1,21 +1,15 @@
 import { Button, Card, Col, Grid, Row, Text } from '@nextui-org/react';
-import { useEffect, useState } from 'react';
-import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart/react';
-import type { Product } from '../../types';
-import { getProducts } from '../../utils/cms/products';
-// import products from '../../data/products';
 import { useRouter } from 'next/router';
+import { formatCurrencyString, useShoppingCart } from 'use-shopping-cart/react';
+import type { ProductType } from '../../types';
 
-const Products = () => {
+type Props = {
+  products: ProductType[];
+};
+
+const Products = ({ products }: Props) => {
   const { addItem } = useShoppingCart();
-  const [products, setProducts] = useState<Product[]>([]);
   const router = useRouter();
-
-  useEffect(() => {
-    (async () => {
-      setProducts(await getProducts());
-    })();
-  }, [products]);
 
   return (
     <section className="products">
