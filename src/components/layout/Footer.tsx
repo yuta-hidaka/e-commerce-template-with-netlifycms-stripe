@@ -9,11 +9,13 @@ const Footer = () => {
 
   const MenuItem = ({ text, path }: { text: string; path: string }) => {
     return (
-      <Button size="sm" key={path}>
-        <Link href={path}>
-          <a>{text}</a>
-        </Link>
-      </Button>
+      <Grid>
+        <Button size="sm" key={path} color="default" light>
+          <Link href={path}>
+            <a>{text}</a>
+          </Link>
+        </Button>
+      </Grid>
     );
   };
 
@@ -34,12 +36,10 @@ const Footer = () => {
 
   return (
     <footer>
-      <Grid.Container justify='center'>
-        <Grid>
-          <Button.Group color="default" light>
-            {pages.map((v) => MenuItem({ text: v.text, path: v.path }))}
-          </Button.Group>
-        </Grid>
+      <Grid.Container justify="center" gap={2}>
+        {/* <Button.Group color="default" light> */}
+        {pages.map((v) => MenuItem({ text: v.text, path: v.path }))}
+        {/* </Button.Group> */}
       </Grid.Container>
     </footer>
   );
