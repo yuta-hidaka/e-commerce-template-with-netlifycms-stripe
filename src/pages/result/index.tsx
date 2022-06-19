@@ -1,24 +1,24 @@
 import { NextPage } from 'next';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 
 import { Grid, Image, Spacer, Text } from '@nextui-org/react';
 
-import useSWR from 'swr';
-import { fetchGetJSON } from '../../utils/stripe/api-helpers';
+// import useSWR from 'swr';
+// import { fetchGetJSON } from '../../utils/stripe/api-helpers';
 
 const ResultPage: NextPage = () => {
-  const router = useRouter();
+  // const router = useRouter();
 
   // Fetch CheckoutSession from static page via
   // https://nextjs.org/docs/basic-features/data-fetching#static-generation
-  const { data, error } = useSWR(
-    router.query.session_id
-      ? `/api/checkout_sessions/${router.query.session_id}`
-      : null,
-    fetchGetJSON
-  );
+  // const { data, error } = useSWR(
+  //   router.query.session_id
+  //     ? `/api/checkout_sessions/${router.query.session_id}`
+  //     : null,
+  //   fetchGetJSON
+  // );
 
-  if (error) return <div>failed to load </div>;
+  // if (error) return <div>failed to load </div>;
 
   return (
     <Grid.Container gap={2} justify="center">
