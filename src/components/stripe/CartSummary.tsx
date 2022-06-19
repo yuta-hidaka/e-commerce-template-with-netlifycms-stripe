@@ -38,7 +38,7 @@ const CartSummary = () => {
     setErrorMessage('');
 
     const response = await fetchPostJSON(
-      '/api/checkout_sessions/cart',
+      '/api/cart',
       cartDetails
     );
 

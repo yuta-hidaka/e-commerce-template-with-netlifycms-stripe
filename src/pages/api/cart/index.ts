@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import Stripe from 'stripe'
-import { getProducts } from '../../../../utils/cms/products'
+import { getProducts } from '../../../utils/cms/products'
 /*
  * Product data can be loaded from anywhere. In this case, we’re loading it from
  * a local JSON file, but this could also come from an async call to your
