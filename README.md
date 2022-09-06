@@ -7,6 +7,9 @@ This template for small business owner or thinking start small business.
 
 May you need some coding skill but just little😋
 
+### 🖥Demo Page
+- https://e-commerce-template-with-netlifycms.netlify.app/
+
 This stack with.
 
 ### Netlify CMS
@@ -24,25 +27,25 @@ This stack with.
 
 ## before you started.
 
-1. Create Github account
+### 1. Create Github account
 
 This for managing your CMS and save data.
 
 https://github.com/
 
-2. Create Stripe account
+### 2. Create Stripe account
 
 This for managing your Product.
 
 https://stripe.com/
 
-3. Get Stripe Secret Key, Publishable Key.
+### 3. Get Stripe Secret Key, Publishable Key.
 
 This use for cart and purchasing.
 
 https://stripe.com/docs/keys
 
-3. Sign in with github account on Netlify.
+### 3. Sign in with github account on Netlify.
 
 This for deploy your website easy.
 
@@ -60,7 +63,7 @@ First, run the development server:
 yarn dev
 ```
 
-Then, run local auth server for cms.
+Then, run local auth server for Netlify CMS.
 ```bash
 npx netlify-cms-proxy-server
 ```
