@@ -7,7 +7,7 @@ This template for small business owner or thinking start small business.
 
 May you need some coding skill but just little😋
 
-### 🖥Demo Page
+### 🖥 Demo Page
 - https://e-commerce-template-with-netlifycms.netlify.app/
 
 This stack with.
